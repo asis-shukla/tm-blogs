@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import TextField from "@mui/material/TextField/TextField";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../app/hooks";
 import styles from "./Login.module.css";
 import { generateOtpAsync, validateOtpAync } from "./loginSlice";
@@ -8,6 +9,7 @@ import { generateOtpAsync, validateOtpAync } from "./loginSlice";
 function Login() {
   // const count = useAppSelector(selectCount);
   const dispatch = useAppDispatch();
+  let navigate = useNavigate();
   const [mobileNumber, setMobileNumber] = useState("");
   const [otpValue, setOtpValue] = useState("");
   const [isOTPGenrated, setisOTPGenrated] = useState(false);
@@ -33,6 +35,7 @@ function Login() {
           otp: otpValue,
         })
       );
+      navigate("/articles");
     }
   };
 
