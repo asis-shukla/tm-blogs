@@ -14,7 +14,8 @@ const initialState: ArticlesState = {
 
 export const fetchArticlesAsync = createAsyncThunk(
   "articles/fetchArticles",
-  async (token: string) => {
+  async () => {
+    const token = "dasdssadas"
     const response = await fetchArticles(token);
     return response.data;
   }
