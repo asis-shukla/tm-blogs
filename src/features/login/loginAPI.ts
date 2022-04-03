@@ -8,7 +8,8 @@ export function generateOtp(mobileNumber: number) {
     {
       headers: {
         transactionId: "react_interview",
-      },
+        'Access-Control-Allow-Origin': '*'
+      }
     }
   );
 }

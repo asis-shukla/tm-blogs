@@ -4,12 +4,14 @@ import { generateOtp, validateOtp } from "./loginAPI";
 
 export interface LoginState {
   value: number;
-  status: "idle" | "loading" | "failed";
+  generateOtpStatus: "idle" | "loading" | "failed";
+  validateOtpStatus: "idle" | "loading" | "failed";
 }
 
 const initialState: LoginState = {
   value: 0,
-  status: "idle",
+  generateOtpStatus: "idle",
+  validateOtpStatus: "idle"
 };
 
 export const generateOtpAsync = createAsyncThunk(
@@ -52,17 +54,17 @@ export const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(generateOtpAsync.pending, (state) => {
-        state.status = "loading";
+        state.generateOtpStatus = "loading";
       })
       .addCase(generateOtpAsync.fulfilled, (state, action) => {
-        state.status = "idle";
+        state.generateOtpStatus = "idle";
         state.value += action.payload;
       })
       .addCase(validateOtpAync.pending, (state) => {
-        state.status = "loading";
+        state.validateOtpStatus = "loading";
       })
       .addCase(validateOtpAync.fulfilled, (state, action) => {
-        state.status = "idle";
+        state.validateOtpStatus = "idle";
         state.value += action.payload;
       });
   },
