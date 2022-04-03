@@ -1,16 +1,13 @@
 import axios from "axios";
 
 export function generateOtp(mobileNumber: number) {
+  const headers = {
+    transactionId: "react_interview"
+  };
   return axios.post(
-    `https://stage-services.truemeds.in/CustomerService/sendOtp?mobileNo=${mobileNumber}
-    `,
-    null,
-    {
-      headers: {
-        transactionId: "react_interview",
-        'Access-Control-Allow-Origin': '*'
-      }
-    }
+    `https://stage-services.truemeds.in/CustomerService/sendOtp?mobileNo=${mobileNumber}`,
+    undefined,
+    { headers }
   );
 }
 
